@@ -1,0 +1,31 @@
+{
+  "name": "@fczbkk/workshop-npm-yarn",
+  "version": "1.0.0",
+  "scripts": {
+    "hello": "echo \"hello world\"",
+    "rmrf": "rm -rf ./build",
+    "cleanup": "rimraf ./build",
+    "prebuild": "npm run cleanup",
+    "build": "webpack --config ./webpack.config.js",
+    "prod": "npm run build -- --mode=production",
+    "dev": "npm run build -- --mode=development",
+    "start": "if-env NODE_ENV=production && npm run prod || npm run dev",
+    "simple": "node ./automation/simple.js",
+    "async": "node ./automation/async.js",
+    "sequence": "npm run async && npm run simple",
+    "parallel": "npm run async & npm run simple",
+    "fail": "node ./automation/fail.js",
+    "success": "node ./automation/success.js",
+    "and": "npm run fail && npm run success",
+    "or": "npm run success || npm run fail",
+    "task": "node automation/task.js",
+    "pretask": "node automation/pretask.js",
+    "prepretask": "node automation/prepretask.js"
+  },
+  "devDependencies": {
+    "if-env": "^1.0.4",
+    "rimraf": "^3.0.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
+}
